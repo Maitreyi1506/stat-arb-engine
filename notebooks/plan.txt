@@ -1,0 +1,46 @@
+Notebooks (descriptions / cell plan)
+notebooks/01_pairs_trading.ipynb
+
+Cells outline:
+
+Title + imports
+
+Load data: example tickers + plot prices
+
+Engle-Granger test across pairs (table of p-values)
+
+Pick pair, estimate OLS hedge ratio, plot spread + zscore
+
+Backtest using backtester.generate_pair_signals & visualize performance
+
+Save figures + short interpretation
+
+notebooks/02_triplets_trading.ipynb
+
+Cells outline:
+
+Title + imports
+
+Build candidate triplets (choose 3-6 tickers)
+
+Run Johansen test: extract cointegrating vectors
+
+Construct spread using first eigenvector
+
+Backtest similar to pairs but with 3 legs
+
+Diagnostics: eigenvalues, trace statistics
+
+notebooks/03_kalman_dynamic_hedge.ipynb
+
+Cells outline:
+
+Title + imports
+
+Show shortcoming of OLS hedge ratio (rolling window plot)
+
+Apply kalman_regression from src/kalman.py and plot beta1 over time
+
+Create spread using dynamic beta, compare zscore and PnL
+
+Quick sensitivity analysis for delta
