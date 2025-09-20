@@ -21,13 +21,14 @@ def generate_pair_signals(spread, entry_z=2.0, exit_z=0.5):
   exit_cond = abs(zs) < exit_z
   pos = 0
   for t in range(len(zs)):
-  if long_cond.iloc[t] and pos == 0:
-  pos = -1 # short spread => short first, long second (depends on spread def)
-  elif short_cond.iloc[t] and pos == 0:
-  pos = 1
-  elif exit_cond.iloc[t]:
-  pos = 0
-  positions.iloc[t] = pos
+    if long_cond.iloc[t] and pos == 0:
+      pos = -1 # short spread => short first, long second (depends on spread def)
+    elif short_cond.iloc[t] and pos == 0:
+      pos = 1
+    elif exit_cond.iloc[t]:
+      pos = 0
+    positions.iloc[t] = pos
+    
   # signals for both legs (assume dollar-neutral equal weight)
   signals = pd.DataFrame(index=spread.index, columns=['leg1', 'leg2'])
   signals['leg1'] = positions
